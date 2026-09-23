@@ -1,0 +1,6 @@
+entity divisor_1s is
+    Port (
+        clk     : in  bit;
+        tick_1s : out bit
+    );
+end divisor_1s;
