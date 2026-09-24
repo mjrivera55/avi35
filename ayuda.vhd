@@ -25,7 +25,8 @@ end component;
         tic          : in  STD_LOGIC;
         person       : in  STD_LOGIC;
         felicitacion : out STD_LOGIC;
-        en_exceso    : out integer range 0 to 99
+        en_exceso    : out std_LOGIC;
+		  conteo       : out integer range 0 to 35
 		  );
 end component;
 
@@ -37,7 +38,8 @@ end component;
         tic          : in  STD_LOGIC;
         person       : in  STD_LOGIC;
 		  led_alarma   : out STD_LOGIC;
-		  en_exceso    : out integer range 0 to 99
+		  en_exceso    : in std_LOGIC;
+		  tiempo_extra : out integer range 0 to 99
 		  );
 end component;
 

@@ -7,32 +7,45 @@ Port (
         reset        : in  STD_LOGIC;
         tic          : in  STD_LOGIC;
         person       : in  STD_LOGIC;
+		  en_exceso    : in std_LOGIC;
 		  led_alarma   : out STD_LOGIC;
-		  en_exceso   : out integer range 0 to 99
+		  tiempo_extra: out integer range 0 to 99
 		  );
 end caso_2;
 
 architecture demas of caso_2 is
+	
 	signal plust : integer range 0 to 35 :=0;
-	signal en_exceso_int: std_LOGIC :='0';
+	
 	begin
 		process (clk,reset)
 		begin
+		
 		if reset = '1' then
-            plust      <= 0;
+            plust   <= 0;
+				
 		elsif rising_edge(clk) then
-         if person = '1' and en_exceso_int = '1' then
+		
+            -- La persona sigue ocupando el espacio
+            -- después de los 35 segundos		
+		
+         if person = '1' and en_exceso = '1' then
                 if tic = '1' then
+					     if plust < 99 then
                     plust <= plust + 1;
                 end if;
+				end if;
+		   -- Si no está en exceso,
+         -- preparar contador para la próxima vez
             else
                 plust <= 0; 
             end if;
         end if;
     end process;
 	 
-	 led_alarma <= '1' when (person = '1' and en_exceso_int = '1') else '0';
-    en_exceso <= plust;
+ -- Alarma mientras la persona siga después de los 35 s
+	 led_alarma <= '1' when (person = '1' and en_exceso = '1') else '0';
+    tiempo_extra <= plust;
 
 end demas;
             
