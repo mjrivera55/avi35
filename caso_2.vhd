@@ -8,20 +8,20 @@ Port (
         tic          : in  STD_LOGIC;
         person       : in  STD_LOGIC;
 		  led_alarma   : out STD_LOGIC;
-		  fact_t 		: out STD_LOGIC;
-        en_exceso    : out STD_LOGIC );
+		  en_exceso   : out integer range 0 to 99
+		  );
 end caso_2;
 
 architecture demas of caso_2 is
 	signal plust : integer range 0 to 35 :=0;
-	
+	signal en_exceso_int: std_LOGIC :='0';
 	begin
-		process
+		process (clk,reset)
 		begin
 		if reset = '1' then
             plust      <= 0;
 		elsif rising_edge(clk) then
-         if person = '1' and en_exceso = '1' then
+         if person = '1' and en_exceso_int = '1' then
                 if tic = '1' then
                     plust <= plust + 1;
                 end if;
@@ -31,7 +31,8 @@ architecture demas of caso_2 is
         end if;
     end process;
 	 
-    
+	 led_alarma <= '1' when (person = '1' and en_exceso_int = '1') else '0';
+    en_exceso <= plust;
 
 end demas;
             

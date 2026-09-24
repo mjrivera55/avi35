@@ -1,0 +1,40 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+
+
+package ayuda is 
+
+  component divisor_1s is
+	Port (
+        clk     : in  std_logic;
+		  reset     : in  STD_LOGIC;
+        tic : out std_LOGIC
+    );
+	end component;
+	
+	component caso_1 is
+	Port (
+        clk          : in  STD_LOGIC;
+        reset        : in  STD_LOGIC;
+        tic          : in  STD_LOGIC;
+        person       : in  STD_LOGIC;
+        felicitacion : out STD_LOGIC;
+        en_exceso    : out STD_LOGIC
+		  );
+end component;
+
+
+	component caso_2 is
+	Port (
+        clk          : in  STD_LOGIC;
+        reset        : in  STD_LOGIC;
+        tic          : in  STD_LOGIC;
+        person       : in  STD_LOGIC;
+		  led_alarma   : out STD_LOGIC;
+		  fact_t : out integer range 0 to 35;
+		  en_exceso    : out STD_LOGIC
+		  );
+end component;
+
+end package;
