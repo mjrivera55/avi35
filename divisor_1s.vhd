@@ -13,7 +13,7 @@ end divisor_1s;
 ----49999999
 
 architecture tiempo of divisor_1s is 
-    constant TOPE : integer := 2;
+    constant TOPE : integer := 49999999;
     signal tiempo : integer range 0 to TOPE := 0;
  
  begin

@@ -21,7 +21,7 @@ architecture demas of caso_2 is
 		process (clk,reset)
 		begin
 		
-		if reset = '0' then
+		if reset = '1' then
             plust   <= 0;
 				
 		elsif rising_edge(clk) then

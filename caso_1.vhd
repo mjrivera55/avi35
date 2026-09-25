@@ -25,7 +25,6 @@ architecture descrip of caso_1 is
 		if reset = '1' then
             momento      <= 0;
             felicitacion <= '0';
-            en_exceso    <= '0';
 				
         elsif rising_edge(clk) then
 -- Persona ocupando el espacio  
@@ -38,13 +37,6 @@ architecture descrip of caso_1 is
 			end if;
 
 		
--- Cuando llega a 35 segundos
-
-	if momento >= 35 then
-        en_exceso <= '1';
-              else
-						en_exceso <= '0';
-                end if;
 
      -- Espacio libre
             else
@@ -57,14 +49,16 @@ architecture descrip of caso_1 is
 
                 -- Reiniciar para la siguiente persona
                 momento   <= 0;
-                en_exceso <= '0';
 
             end if;
 
         end if;
-
+	
     end process;
 
+-- Asignaciones combinacionales fuera del proceso 
+	 
+  en_exceso <= '1' when (person = '1' and momento >= 35) else '0';
   conteo <= momento;
 
 end descrip;
