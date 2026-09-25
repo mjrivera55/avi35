@@ -10,8 +10,11 @@ entity divisor_1s is
     );
 end divisor_1s;
 
+----49999999
+
 architecture tiempo of divisor_1s is 
- signal tiempo: integer range 0 to 24999999 :=0;
+    constant TOPE : integer := 2;
+    signal tiempo : integer range 0 to TOPE := 0;
  
  begin
 	
@@ -21,9 +24,10 @@ architecture tiempo of divisor_1s is
 	if reset='1' then 
 		tiempo <= 0;
 		tic <='0';
+	
 	elsif rising_edge(clk) then
 	
-		if tiempo= 24999999 then
+		if tiempo= TOPE then
 		
 			tiempo<=0;
 			tic <='1';

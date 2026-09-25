@@ -32,16 +32,15 @@ architecture descrip of caso_1 is
             if person = '1' then
                 felicitacion <= '0';
  -- Contador de segundos
-		if tic='1' then
-		
-			if momento <35 then 
+ 
+			if tic='1' and momento <35 then 
 					momento <= momento +1;
 			end if;
-		end if;
+
 		
 -- Cuando llega a 35 segundos
 
-	if momento >= 34 then
+	if momento >= 35 then
         en_exceso <= '1';
               else
 						en_exceso <= '0';
@@ -54,11 +53,6 @@ architecture descrip of caso_1 is
                 if momento > 0 and momento < 35 then
 
                     felicitacion <= '1';
-
-                else
-
-                    felicitacion <= '0';
-
                 end if;
 
                 -- Reiniciar para la siguiente persona

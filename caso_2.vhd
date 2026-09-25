@@ -15,13 +15,13 @@ end caso_2;
 
 architecture demas of caso_2 is
 	
-	signal plust : integer range 0 to 35 :=0;
+	signal plust : integer range 0 to 99 :=0;
 	
 	begin
 		process (clk,reset)
 		begin
 		
-		if reset = '1' then
+		if reset = '0' then
             plust   <= 0;
 				
 		elsif rising_edge(clk) then
