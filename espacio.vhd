@@ -28,6 +28,7 @@ architecture top of espacio is
 	 signal wire_conteo : integer range 0 to 35; -- Conteo de los primeros 35 segundos
 	 signal wire_tiempo_extra : integer range 0 to 99; -- Tiempo adicional
 	 
+	 ------ BCD del tiempo permitido (0-35 s: decenas 0-3, unidades 0-9 (9 porque primero debe pasar por 09,19,29)
     signal decenas_ini  : integer range 0 to 3;
     signal unidades_ini : integer range 0 to 9;
     signal bcd_ini_dec  : STD_LOGIC_VECTOR(3 downto 0);
@@ -99,8 +100,8 @@ begin
     ----------------------------------------------------------------
     -- SEPARAR DECENAS Y UNIDADES DEL TIEMPO EXTRA (0-99, flujo de datos)
     ----------------------------------------------------------------
-    decenas_ext  <= wire_tiempo_extra / 10;
-    unidades_ext <= wire_tiempo_extra mod 10;
+    decenas_ext  <= wire_tiempo_extra / 10; ----Extrae las Decenas
+    unidades_ext <= wire_tiempo_extra mod 10; ----Extrae las Unidades
  
     bcd_ext_dec <= std_logic_vector(to_unsigned(decenas_ext, 4));
     bcd_ext_uni <= std_logic_vector(to_unsigned(unidades_ext, 4));
