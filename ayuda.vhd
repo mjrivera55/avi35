@@ -1,6 +1,7 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
+-----Packgage lo hice para darle mas orden a mi codigo.
 
 package ayuda is 
    

@@ -15,7 +15,7 @@ end caso_2;
 
 architecture demas of caso_2 is
 	
-	signal plust : integer range 0 to 99 :=0;
+	signal plust : integer range 0 to 99 :=0; --ayuda a contar el tiempo extra en la logica
 	
 	begin
 		process (clk,reset)

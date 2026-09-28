@@ -10,10 +10,10 @@ entity divisor_1s is
     );
 end divisor_1s;
 
-----49999999
+-- divisor de 50Mhz
 
 architecture tiempo of divisor_1s is 
-    constant TOPE : integer := 49999999;
+    constant TOPE : integer := 49999999;  ---el tiempo a dividir 
     signal tiempo : integer range 0 to TOPE := 0;
  
  begin
@@ -26,6 +26,8 @@ architecture tiempo of divisor_1s is
 		tic <='0';
 	
 	elsif rising_edge(clk) then
+	
+	-- aqui es donde al contarse en el reloj los 50Mhz se cuenta un tic "un tipo enable para el tiempo"
 	
 		if tiempo= TOPE then
 		
